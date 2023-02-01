@@ -8,13 +8,12 @@ import CardEvent from './CardEvent';
 interface Props {
   id: number;
   start: string;
+  end: string;
 }
 
 const getEventByTime = (time: string) => {
   return Object.values(Event).filter((event: Props) => {
-    console.log(event.start);
-    console.log(time);
-    return event.start > time;
+    return event.end > time;
   });
 };
 
@@ -35,14 +34,10 @@ const ListCard: React.FC = () => {
   }, [time]);
 
   return (
-    <div>
-      <div className="listCard">
-        <div className="listCard__content">
-          {Object.values(allEvent).map((event) => (
-            <CardEvent key={event.id} event={event} />
-          ))}
-        </div>
-      </div>
+    <div className="listCard">
+      {Object.values(allEvent).map((event) => (
+        <CardEvent key={event.id} event={event} />
+      ))}
     </div>
   );
 };
