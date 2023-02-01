@@ -1,9 +1,9 @@
 import React from 'react';
 
-const Admin = () => {
+const Admin: React.FC = () => {
   return (
     <div>
-      <h1>Admin</h1>
+      <h1>Vue Admin</h1>
     </div>
   );
 };

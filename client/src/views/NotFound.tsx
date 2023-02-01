@@ -1,9 +1,9 @@
 import React from 'react';
 
-const NotFound = () => {
+const NotFound: React.FC = () => {
   return (
     <div>
-      <h1>Not Found</h1>
+      <h1>404 Not Found 3000</h1>
     </div>
   );
 };
