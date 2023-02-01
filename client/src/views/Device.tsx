@@ -1,10 +1,18 @@
 import React from 'react';
 
+import ListCard from '../components/ListCard';
+import '../assets/views/device.scss'
+
 const Devices: React.FC = () => {
   return (
-    <div>
-      <h1>Vue devices</h1>
-    </div>
+    <main>
+      <section>
+        <h1>Vue devices</h1>
+      </section>
+      <section>
+        <ListCard />
+      </section>
+    </main>
   );
 };
 

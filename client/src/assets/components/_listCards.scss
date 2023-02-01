@@ -1,0 +1,11 @@
+.listCard {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 24px;
+  padding: 65px 80px;
+
+  overflow: hidden;
+
+  background: #FDF9FA;
+}
