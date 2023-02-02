@@ -1,11 +1,46 @@
 .listCard {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 24px;
   padding: 65px 80px;
-
+  box-sizing: border-box;
   overflow: hidden;
-
+  height: 100vh;
+  position: relative;
   background: #FDF9FA;
+  .shadow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 11%;
+    background: #FDF9FA;
+    z-index: 1;
+  }
+  .shadow:nth-child(1) {
+    top: auto;
+    bottom: 0;
+    height: 6%;
+    background: #FDF9FA;
+  }
+  &__title {
+    position: absolute;
+    z-index: 2;
+    color: #1B1A21;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-top: 11%;
+    gap: 24px;
+    animation: contentScroll 30s linear 15s infinite alternate;
+  }
+}
+
+@keyframes contentScroll {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(0, -60%, 0);
+  }
 }

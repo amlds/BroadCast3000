@@ -2,13 +2,10 @@ import React from 'react';
 
 import Event from '../data/event.json';
 
-import CardEvent from './CardEvent';
-
-
 interface Props {
   id: number;
-  start: string;
   end: string;
+  image: string;
 }
 
 const getEventByTime = (time: string) => {
@@ -17,10 +14,10 @@ const getEventByTime = (time: string) => {
   });
 };
 
-const ListCard: React.FC = () => {
+const FocusImage: React.FC = () => {
   let Time = new Date().toISOString();
   const [time, setTime] = React.useState(Time);
-  const [allEvent, setAllEvent] = React.useState(getEventByTime(time));
+  const [CommingEvent, setCommingEvent] = React.useState(getEventByTime(time));
 
   React.useEffect(() => {
     const interval = setInterval(() => {
@@ -30,21 +27,15 @@ const ListCard: React.FC = () => {
   }, [time]);
 
   React.useEffect(() => {
-    setAllEvent(getEventByTime(time));
+    setCommingEvent(getEventByTime(time));
   }, [time]);
 
   return (
-    <div className="listCard">
-      <span className='shadow'></span>
-      <h2 className='listCard__title'>Nos prochains events :</h2>
-      <div className='listCard__content'>
-        {Object.values(allEvent).map((event) => (
-          <CardEvent key={event.id} event={event} />
-          ))}
-      </div>
-      <span className='shadow'></span>
+    <div className='focusImages'>
+      <img className='focusImages_content' src={CommingEvent[0].image} alt='Wagon Logo'></img>
+      <img className='focusImages_content' src={CommingEvent[1].image} alt='Wagon Logo'></img>
     </div>
   );
 };
 
-export default ListCard;
+export default FocusImage;
