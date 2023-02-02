@@ -1,4 +1,30 @@
-main{
+.device {
   display: grid;
   grid-template-columns: 2fr 1fr;
+  box-sizing: border-box;
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 65px 80px;
+    box-sizing: border-box;
+    overflow: hidden;
+    height: 100vh;
+    gap: 22%;
+
+    .logo {
+      width: 235px;
+      height: auto;
+    }
+
+    &--text {
+      h1 {
+        font-size: 48px;
+      }
+      p {
+        font-size: 18px;
+      }
+    }
+  }
 }

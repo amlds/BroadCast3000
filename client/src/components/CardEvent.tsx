@@ -34,11 +34,11 @@ const CardEvent: React.FC<Props> = (event) => {
 
   return (
     <div className="cardEvent" ref={eventRef}>
-      <h2 className="cardEvent__content__start">
+      <h3 className="cardEvent__content__start">
           {structureTime(event.event.start)}
-      </h2>
+      </h3>
       <div className="cardEvent__content">
-        <h2 className="cardEvent__content__title">{event.event.name}</h2>
+        <h3 className="cardEvent__content__title">{event.event.id+1} - {event.event.name}</h3>
         <p className="cardEvent__content__description">
           {event.event.description}
         </p>
