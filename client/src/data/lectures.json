@@ -1,407 +1,407 @@
 {
   "day1": {
-    "date": "2018-01-01",
-    "events": [
+    "id": 1,
+    "date": "2023-02-01",
+    "challenge":
       {
         "name": "_Setup",
         "time": "10:00"
       }
-    ]
   },
   "day2": {
-    "date": "2018-01-02",
-    "events": [
+    "id": 2,
+    "date": "2023-02-02",
+    "challenge":
       {
         "name": "Programming Basics",
         "time": "10:00"
       }
-    ]
   },
   "day3": {
-    "date": "2018-01-03",
-    "events": [
+    "id": 3,
+    "date": "2023-02-03",
+    "challenge":
       {
         "name": "Flow, Conditionals & Arrays",
         "time": "10:00"
       }
-    ]
   },
   "day4": {
-    "date": "2018-01-04",
-    "events": [
+    "id": 4,
+    "date": "2023-02-04",
+    "challenge":
       {
         "name": "Iterators & Blocks",
         "time": "10:00"
       }
-    ]
   },
   "day5": {
-    "date": "2018-01-05",
-    "events": [
+    "id": 5,
+    "date": "2023-02-05",
+    "challenge":
       {
         "name": "Hash & Symbols",
         "time": "10:00"
       }
-    ]
   },
   "day6": {
-    "date": "2018-01-06",
-    "events": [
+    "id": 6,
+    "date": "2023-02-06",
+    "challenge":
       {
         "name": "Regular Expressions",
         "time": "10:00"
       }
-    ]
   },
   "day7": {
-    "date": "2018-01-07",
-    "events": [
+    "id": 7,
+    "date": "2023-02-07",
+    "challenge":
       {
         "name": "Parsing",
         "time": "10:00"
       }
-    ]
   },
   "day8": {
-    "date": "2018-01-08",
-    "events": [
+    "id": 8,
+    "date": "2023-02-08",
+    "challenge":
       {
         "name": "Classes & Instances",
         "time": "10:00"
       }
-    ]
   },
   "day9": {
-    "date": "2018-01-09",
-    "events": [
+    "id": 9,
+    "date": "2023-02-09",
+    "challenge":
       {
         "name": "Inheritance & Self",
         "time": "10:00"
       }
-    ]
   },
   "day10": {
-    "date": "2018-01-10",
-    "events": [
+    "id": 10,
+    "date": "2023-02-10",
+    "challenge":
       {
         "name": "Cookbook (Day 1)",
         "time": "10:00"
       }
-    ]
   },
   "day11": {
-    "date": "2018-01-11",
-    "events": [
+    "id": 11,
+    "date": "2023-02-11",
+    "challenge":
       {
         "name": "Cookbook (Day 2)",
         "time": "10:00"
       }
-    ]
   },
   "day12": {
-    "date": "2018-01-12",
-    "events": [
+    "id": 12,
+    "date": "2023-02-12",
+    "challenge":
       {
         "name": "Food Delivery (Day 1)",
         "time": "10:00"
       }
-    ]
   },
   "day13": {
-    "date": "2018-01-13",
-    "events": [
+    "id": 13,
+    "date": "2023-02-13",
+    "challenge":
       {
         "name": "Food Delivery (Day 2)",
         "time": "10:00"
       }
-    ]
   },
   "day14": {
-    "date": "2018-01-14",
-    "events": [
+    "id": 14,
+    "date": "2023-02-14",
+    "challenge":
       {
         "name": "Schema Design & SQL",
         "time": "10:00"
       }
-    ]
   },
   "day15": {
-    "date": "2018-01-15",
-    "events": [
+    "id": 15,
+    "date": "2023-02-15",
+    "challenge":
       {
         "name": "CRUD with SQL",
         "time": "10:00"
       }
-    ]
   },
   "day16": {
-    "date": "2018-01-16",
-    "events": [
+    "id": 16,
+    "date": "2023-02-16",
+    "challenge":
       {
         "name": "Active Record Basics",
         "time": "10:00"
       }
-    ]
   },
   "day17": {
-    "date": "2018-01-17",
-    "events": [
+    "id": 17,
+    "date": "2023-02-17",
+    "challenge":
       {
         "name": "Associations & Validations",
         "time": "10:00"
       }
-    ]
   },
   "day18": {
-    "date": "2018-01-18",
-    "events": [
+    "id": 18,
+    "date": "2023-02-18",
+    "challenge":
       {
         "name": "HTML & CSS",
         "time": "10:00"
       }
-    ]
   },
   "day19": {
-    "date": "2018-01-19",
-    "events": [
+    "id": 19,
+    "date": "2023-02-19",
+    "challenge":
       {
         "name": "CSS Components",
         "time": "10:00"
       }
-    ]
   },
   "day20": {
-    "date": "2018-01-20",
-    "events": [
+    "id": 20,
+    "date": "2023-02-20",
+    "challenge":
       {
         "name": "Bootstrap & Layouts",
         "time": "10:00"
       }
-    ]
   },
   "day21": {
-    "date": "2018-01-21",
-    "events": [
+    "id": 21,
+    "date": "2023-02-21",
+    "challenge":
       {
         "name": "JavaScript basics",
         "time": "10:00"
       }
-    ]
   },
   "day22": {
-    "date": "2018-01-22",
-    "events": [
+    "id": 22,
+    "date": "2023-02-22",
+    "challenge":
       {
-        "name": "DOM & Events",
+        "name": "DOM & challenge",
         "time": "10:00"
       }
-    ]
   },
   "day23": {
-    "date": "2018-01-23",
-    "events": [
+    "id": 23,
+    "date": "2023-02-23",
+    "challenge":
       {
         "name": "HTTP & AJAX",
         "time": "10:00"
       }
-    ]
   },
   "day24": {
-    "date": "2018-01-24",
-    "events": [
+    "id": 24,
+    "date": "2023-02-24",
+    "challenge":
       {
         "name": "JavaScript Packages",
         "time": "10:00"
       }
-    ]
   },
   "day25": {
-    "date": "2018-01-25",
-    "events": [
+    "id": 25,
+    "date": "2023-02-25",
+    "challenge":
       {
         "name": "Product Design Sprint",
         "time": "10:00"
       }
-    ]
   },
   "day26": {
-    "date": "2018-01-26",
-    "events": [
+    "id": 26,
+    "date": "2023-02-26",
+    "challenge":
       {
         "name": "Routing, Controllers & Views",
         "time": "10:00"
       }
-    ]
   },
   "day27": {
-    "date": "2018-01-27",
-    "events": [
+    "id": 27,
+    "date": "2023-02-27",
+    "challenge":
       {
         "name": "Models & CRUD",
         "time": "10:00"
       }
-    ]
   },
   "day28": {
-    "date": "2018-01-28",
-    "events": [
+    "id": 28,
+    "date": "2023-02-28",
+    "challenge":
       {
         "name": "Advanced Routing",
         "time": "10:00"
       }
-    ]
   },
   "day29": {
-    "date": "2018-01-29",
-    "events": [
+    "id": 29,
+    "date": "2023-02-29",
+    "challenge":
       {
         "name": "Front-End",
         "time": "10:00"
       }
-    ]
   },
   "day30": {
-    "date": "2018-01-30",
-    "events": [
+    "id": 30,
+    "date": "2023-02-30",
+    "challenge":
       {
         "name": "Hosting & Image Upload",
         "time": "10:00"
       }
-    ]
   },
   "day31": {
-    "date": "2018-01-31",
-    "events": [
+    "id": 31,
+    "date": "2023-02-31",
+    "challenge":
       {
         "name": "Authentication & Devise",
         "time": "10:00"
       }
-    ]
   },
   "day32": {
+    "id": 32,
     "date": "2018-02-01",
-    "events": [
+    "challenge":
       {
         "name": "Authorization & Pundit",
         "time": "10:00"
       }
-    ]
   },
   "day33": {
+    "id": 33,
     "date": "2018-02-02",
-    "events": [
+    "challenge":
       {
         "name": "Geocoding",
         "time": "10:00"
       }
-    ]
   },
   "day34": {
+    "id": 34,
     "date": "2018-02-03",
-    "events": [
+    "challenge":
       {
         "name": "Search",
         "time": "10:00"
       }
-    ]
   },
   "day35": {
+    "id": 35,
     "date": "2018-02-04",
-    "events": [
+    "challenge":
       {
         "name": "AJAX in Rails",
         "time": "10:00"
       }
-    ]
   },
   "day36": {
+    "id": 36,
     "date": "2018-02-05",
-    "events": [
+    "challenge":
       {
         "name": "WebSocket & Action Cable",
         "time": "10:00"
       }
-    ]
   },
   "day37": {
+    "id": 37,
     "date": "2018-02-06",
-    "events": [
+    "challenge":
       {
         "name": "From Design To Code",
         "time": "10:00"
       }
-    ]
   },
   "day38": {
+    "id": 38,
     "date": "2018-02-07",
-    "events": [
+    "challenge":
       {
         "name": "Background Jobs & Sidekiq",
         "time": "10:00"
       }
-    ]
   },
   "day39": {
+    "id": 39,
     "date": "2018-02-08",
-    "events": [
+    "challenge":
       {
         "name": "DB advanced",
         "time": "10:00"
       }
-    ]
   },
   "day40": {
+    "id": 40,
     "date": "2018-02-09",
-    "events": [
+    "challenge":
       {
         "name": "Demo preparation",
         "time": "10:00"
       }
-    ]
   },
   "day41": {
+    "id": 41,
     "date": "2018-02-10",
-    "events": [
+    "challenge":
       {
         "name": "Project",
         "time": "10:00"
       }
-    ]
   },
   "day42": {
+    "id": 42,
     "date": "2018-02-11",
-    "events": [
+    "challenge":
       {
         "name": "Project",
         "time": "10:00"
       }
-    ]
   },
   "day43": {
+    "id": 43,
     "date": "2018-02-12",
-    "events": [
+    "challenge":
       {
         "name": "Project",
         "time": "10:00"
       }
-    ]
   },
   "day44": {
+    "id": 44,
     "date": "2018-02-13",
-    "events": [
+    "challenge":
       {
         "name": "Dress Rehearsal",
         "time": "10:00"
       }
-    ]
   },
   "day45": {
+    "id": 45,
     "date": "2018-02-14",
-    "events": [
+    "challenge":
       {
         "name": "Demo Day",
         "time": "10:00"
       }
-    ]
   }
 }

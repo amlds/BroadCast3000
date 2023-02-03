@@ -2,6 +2,8 @@ import React from 'react';
 
 import ListCard from '../components/ListCard';
 import FocusImage from '../components/FocusImage';
+import LectureDay from '../components/LectureDay'
+
 import '../assets/views/device.scss'
 
 const Devices: React.FC = () => {
@@ -28,7 +30,7 @@ const Devices: React.FC = () => {
         <div className='device__content--text'>
           <h1>Hello wagoners !</h1>
           <p>Nous somme le <span className='text-medium' ref={messageRef}></span></p>
-          <p>Ajourd'hui on programme : J'ai pas encore récupérer la données désolé</p>
+          <p>Ajourd'hui on programme : <LectureDay /></p>
           <FocusImage />
         </div>
       </section>

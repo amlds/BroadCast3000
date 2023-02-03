@@ -12,7 +12,7 @@
     width: 1043px;
     object-fit: cover;
     object-position: center;
-    animation: translateImage 30s linear infinite alternate;
+    animation: translateImage 5s linear infinite alternate;
   }
 }
 
@@ -24,9 +24,9 @@
     transform: translate3d(0, 5%, 0);
   }
   52% {
-    transform: translate3d(0, -105%, 0);
+    transform: translate3d(0, -110%, 0);
   }
   100% {
-    transform: translate3d(0, -105%, 0);
+    transform: translate3d(0, -110%, 0);
   }
 }
