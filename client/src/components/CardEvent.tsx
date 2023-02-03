@@ -1,5 +1,7 @@
 import React from "react";
 
+import Edit from "./svg/Edit";
+
 interface Props {
   event: {
     id: number;
@@ -34,9 +36,12 @@ const CardEvent: React.FC<Props> = (event) => {
 
   return (
     <div className="cardEvent" ref={eventRef}>
-      <h3 className="cardEvent__content__start">
+      <div className="cardEvent__header">
+      <h3>
           {structureTime(event.event.start)}
       </h3>
+      <button className="button--edit"><Edit /> Edit</button>
+      </div>
       <div className="cardEvent__content">
         <h3 className="cardEvent__content__title">{event.event.id+1} - {event.event.name}</h3>
         <p className="cardEvent__content__description">
