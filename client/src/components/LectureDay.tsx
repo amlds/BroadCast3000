@@ -2,45 +2,37 @@ import React from "react";
 
 import Lectures from "../data/lectures.json";
 
-
-interface Props {
-  id: number;
+type Props = {
   date: string;
-  event: {
+}
+
+interface Lecture {
+  id: number;
+  date: string
+  challenge: {
     name: string;
-    start: string;
+    time: string;
   }
 }
 
 const getLecturesByDate = (date: string) => {
-  return Object.values(Lectures).filter((lecture) => {
-    return lecture.date === date;
+  return Object.values(Lectures).filter((Lecture: Lecture) => {
+    return Lecture.date === date;
   });
-}
+};
 
-const LecturesDay: React.FC = () => {
-  const [date, setDate] = React.useState(Date);
-  const [allLectures, setAllLectures] = React.useState(getLecturesByDate(date));
-
-  React.useEffect(() => {
-    const interval = setInterval(() => {
-      setDate(new Date().toISOString().slice(0, 10));
-    }, 10000);
-    return () => clearInterval(interval);
-  }, [date]);
+const LecturesDay: React.FC<Props> = (date) => {
+  const [challengeName, setChallengeName] = React.useState(getLecturesByDate(date.date));
 
   React.useEffect(() => {
-    setAllLectures(getLecturesByDate(date));
+    setChallengeName(getLecturesByDate(date.date));
   }, [date]);
 
   return (
     <div className="lecturesDay">
-      <p className="lecturesDay__title">Les prochaines conférences :</p>
-      <div className="lecturesDay__content">
-        {Object.values(allLectures).map((lecture) => (
-          <p>{lecture.challenge.name}</p>
-        ))}
-      </div>
+      <p className="lecturesDay__title">Lecture day web :
+        <span className='text-normal'> {challengeName[0].challenge.name}</span>
+      </p>
     </div>
   );
 }
