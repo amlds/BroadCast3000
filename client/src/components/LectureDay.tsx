@@ -29,11 +29,10 @@ const LecturesDay: React.FC<Props> = (date) => {
   }, [date]);
 
   return (
-    <div className="lecturesDay">
-      <p className="lecturesDay__title">Lecture day web :
-        <span className='text-normal'> {challengeName[0].challenge.name}</span>
-      </p>
-    </div>
+    <p className="lecturesDay">
+      <span className='text-normal'> {challengeName[0].challenge.name}</span>
+      <span className='text-normal'> {challengeName[0].challenge.name}</span>
+    </p>
   );
 }
 
