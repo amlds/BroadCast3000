@@ -2,48 +2,36 @@ import React from "react";
 
 import Edit from "./svg/Edit";
 
-interface Props {
+
+type props = {
   event: {
-    id: number;
-    name: string;
-    description: string;
-    start: string;
-    image: string;
-  };
+    name: string,
+    description: string,
+    startEvent: string,
+    endEvent: string,
+    location: string,
+    image: string,
+  }
 }
 
-const CardEvent: React.FC<Props> = (event) => {
+const CardEvent: React.FC<props> = (event: props) => {
   const eventRef = React.useRef<HTMLDivElement>(null);
-  const iso = /^(\d{4})(?:-?W(\d+)(?:-?(\d+)D?)?|(?:-(\d+))?-(\d+))(?:[T ](\d+):(\d+)(?::(\d+)(?:\.(\d+))?)?)?(?:Z(-?\d*))?$/;  ;
 
   const structureTime = (time: string) => {
-    const parts = time.match(iso);
-    if (parts) {
-      const date = new Date(
-        Date.UTC(
-          Number(parts[1]),
-          Number(parts[4]) - 1,
-          Number(parts[5]),
-          Number(parts[6]),
-          Number(parts[7]),
-          Number(parts[8]),
-          Number(parts[9])
-        )
-      );
-      return `${date.toLocaleDateString('fr-FR', { month: 'long', day: 'numeric' })} à ${date.toLocaleTimeString('fr-FR', { hour: 'numeric', minute: 'numeric' })}`;
-    }
-  }
+    const date = new Date(time);
+    return `${date.toLocaleDateString('fr-FR', { month: 'long', day: 'numeric' })} à ${date.toLocaleTimeString('fr-FR', { hour: 'numeric', minute: 'numeric' })}`;
+  };
 
   return (
     <div className="cardEvent" ref={eventRef}>
       <div className="cardEvent__header">
-      <h3>
-          {structureTime(event.event.start)}
-      </h3>
-      <button className="button--edit"><Edit /> Edit</button>
+        <h3>
+          {structureTime(event.event.startEvent)}
+        </h3>
+        <button className="button--edit"><Edit /> Edit</button>
       </div>
       <div className="cardEvent__content">
-        <h3 className="cardEvent__content__title">{event.event.id+1} - {event.event.name}</h3>
+        <h3 className="cardEvent__content__title">{event.event.name}</h3>
         <p className="cardEvent__content__description">
           {event.event.description}
         </p>

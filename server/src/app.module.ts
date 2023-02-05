@@ -1,6 +1,11 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { DataSource } from 'typeorm';
+import { Event } from './entity/event.entity';
+import { EventsController } from './events/events.controller';
+import { EventsModule } from './events/events.module';
+import { EventsService } from './events/events.service';
 
 @Module({
   imports: [
@@ -14,11 +19,14 @@ import { TypeOrmModule } from '@nestjs/typeorm';
       username: process.env.DATABASE_USERNAME,
       password: process.env.DATABASE_PASSWORD,
       database: process.env.DATABASE_NAME,
-      entities: [__dirname + '/**/*.entity{.ts,.js}'],
+      entities: [__dirname + '/**/*.entity{.ts,.js}', Event],
       synchronize: true,
     }),
+    EventsModule,
   ],
-  controllers: [],
-  providers: [],
+  providers: [EventsService],
+  controllers: [EventsController],
 })
-export class AppModule {}
+export class AppModule {
+  constructor(private dataSource: DataSource) {}
+}

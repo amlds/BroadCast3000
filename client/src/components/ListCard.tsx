@@ -1,45 +1,31 @@
 import React from 'react';
 
-import Event from '../data/event.json';
+import EventService from '../services/EventService';
+import Event from '../types/Event'
 
 import CardEvent from './CardEvent';
 
-
-interface Props {
-  id: number;
-  start: string;
-  end: string;
+const getEvents = async () => {
+  const events = await EventService.getEvents();
+  return events;
 }
 
-const getEventByTime = (time: string) => {
-  return Object.values(Event).filter((event: Props) => {
-    return event.end > time;
-  });
-};
-
 const ListCard: React.FC = () => {
-  let Time = new Date().toISOString();
-  const [time, setTime] = React.useState(Time);
-  const [allEvent, setAllEvent] = React.useState(getEventByTime(time));
+  const [events, setEvents] = React.useState<Event[]>([]);
 
   React.useEffect(() => {
-    const interval = setInterval(() => {
-      setTime(new Date().toISOString());
-    }, 10000);
-    return () => clearInterval(interval);
-  }, [time]);
-
-  React.useEffect(() => {
-    setAllEvent(getEventByTime(time));
-  }, [time]);
+    getEvents().then((events) => {
+      setEvents(events);
+    });
+  }, []);
 
   return (
     <div className="listCard">
       <span className='shadow'></span>
       <h2 className='listCard__title'>Nos prochains events :</h2>
       <div className='listCard__content'>
-        {Object.values(allEvent).map((event) => (
-          <CardEvent key={event.id} event={event} />
+        {Object.values(events).map((event: Event) => (
+          <CardEvent event={event}/>
           ))}
       </div>
       <span className='shadow'></span>
