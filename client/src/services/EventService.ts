@@ -1,76 +1,53 @@
 import Event from '../types/Event';
 
 export class EventController {
-  constructor(private eventsService: Event) {}
-
-  async getEvents(): Promise<Event[]> {
+  static async getEvents(): Promise<Event[]> {
     return fetch('http://localhost:4000/events')
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
         return data;
       }
-    ).catch((error) => {
-      console.log(error);
-    });
+      );
   }
 
-  async getEvent(id: number): Promise<Event> {
-    return fetch(`http://localhost:4000/events/${id}`)
-      .then((response) => response.json())
-      .then((data) => {
-        console.log(data);
-        return data;
-      }
-    ).catch((error) => {
-      console.log(error);
-    });
+  static async getEventById(id: string): Promise<Event> {
+    const response = await fetch(`http://localhost:4000/events/${id}`);
+    const event: Event = await response.json();
+    return event;
   }
 
-  async createEvent(event: Event): Promise<Event> {
-    return fetch('http://localhost:4000/events', {
+  static async createEvent(event: Event): Promise<Event> {
+    const response =  await fetch('http://localhost:4000/events/create', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify(event),
-    }).then((response) => response.json())
-      .then((data) => {
-        console.log(data);
-        return data;
-      }
-    ).catch((error) => {
-      console.log(error);
     });
+    const createdEvent: Event = await response.json();
+    return createdEvent;
   }
 
-  async updateEvent(event: Event): Promise<Event> {
-    return fetch(`http://localhost:4000/events/${event.id}`, {
+  static async updateEvent(event: Event): Promise<Event> {
+    const response = await fetch(`http://localhost:4000/events/${event.id}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify(event),
-    }).then((response) => response.json())
-      .then((data) => {
-        console.log(data);
-        return data;
-      }
-    ).catch((error) => {
-      console.log(error);
     });
+    const updatedEvent: Event = await response.json();
+    return updatedEvent;
   }
 
-  async deleteEvent(id: number): Promise<Event> {
-    return fetch(`http://localhost:4000/events/${id}`, {
+  static async deleteEvent(id: string): Promise<Event> {
+    const response = await fetch(`http://localhost:4000/events/${id}`, {
       method: 'DELETE',
-    }).then((response) => response.json())
-      .then((data) => {
-        console.log(data);
-        return data;
-      }
-    ).catch((error) => {
-      console.log(error);
     });
+    const deletedEvent: Event = await response.json();
+    return deletedEvent;
   }
+
 }
+
+export default EventController;

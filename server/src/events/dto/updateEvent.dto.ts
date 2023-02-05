@@ -1,4 +1,5 @@
 export class UpdateEventDto {
+  id: number;
   name: string;
   description: string;
   startEvent: string;
