@@ -9,9 +9,7 @@ interface Props {
 }
 
 
-const ListCardNew: React.FC<Props> = ({ events }) => {
-  console.log("events");
-  console.log(events);
+const ListCard: React.FC<Props> = ({ events }) => {
 
   return (
     <div className="listCard">
@@ -27,4 +25,4 @@ const ListCardNew: React.FC<Props> = ({ events }) => {
   );
 };
 
-export default ListCardNew;
+export default ListCard;

@@ -4,13 +4,12 @@ import { Link } from 'react-router-dom';
 import EventService from '../services/EventService';
 import Event from '../types/Event'
 
-import ListCardNew from '../components/ListCardNew';
+import ListCard from '../components/ListCard';
 
 const getEvents = async () => {
   const events = await EventService.getEvents();
   return events;
 }
-
 
 const Home: React.FC = () => {
   const [events, setEvents] = React.useState<Event[]>([]);
@@ -25,7 +24,6 @@ const Home: React.FC = () => {
       });
       setEvents(filteredEvents);
     });
-    console.log(events);
   }, []);
 
   return (
@@ -37,7 +35,7 @@ const Home: React.FC = () => {
 
       <section>
         <h2>Les derniers événements</h2>
-        <ListCardNew events={events} />
+        <ListCard events={events} />
       </section>
     </div>
   );

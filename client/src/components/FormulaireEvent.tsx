@@ -43,17 +43,12 @@ const FormulaireEvent: React.FC = () => {
         id: 0
       }).then(res => {
         messageRef.current!.innerHTML = '✅ Event added ✅';
-        console.log('Good response');
-        console.log(res);
       }).catch(err => {
         messageRef.current!.innerHTML = '🚨 Error 🚨';
-        console.log('Bad response');
-        console.error(err);
       });
     } else {
       e.preventDefault();
       messageRef.current!.innerHTML = '🚨 Veuillez remplir tous les champs 🚨';
-      console.log('Formulaire non envoyé');
     }
   };
 

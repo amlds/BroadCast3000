@@ -1,10 +1,11 @@
 import React from 'react';
 
 import EventService from '../services/EventService';
-import Event from '../types/Event'
+import Event from '../types/Event';
 
 import FocusImage from '../components/FocusImage';
-import LectureDay from '../components/LectureDay'
+import LectureDay from '../components/LectureDay';
+import ListCard from '../components/ListCard';
 
 import '../assets/views/device.scss'
 
@@ -28,8 +29,6 @@ const Devices: React.FC = () => {
         return new Date(event.endEvent).getTime() > new Date().getTime();
       });
       setEvents(filteredEvents);
-
-      console.log(Object.values(events));
     });
   }, []);
 
@@ -58,6 +57,7 @@ const Devices: React.FC = () => {
           <FocusImage />
         </div>
       </section>
+      <ListCard events={events} />
     </main>
   );
 };

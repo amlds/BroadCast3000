@@ -1,26 +1,42 @@
 import React from 'react';
+import EventService from '../../services/EventService';
+import Event from '../../types/Event'
 
-import '../assets/views/dashboard.scss'
+import '../../assets/views/dashboard.scss'
 
-/* import ListCard from '../components/old/ListCard'; */
+
+import ListCard from '../../components/ListCard';
 import FormulaireEvent from '../../components/FormulaireEvent';
 import Copy from '../../components/svg/CopyIcones';
 
+const getEvents = async () => {
+  const events = await EventService.getEvents();
+  return events;
+}
 
 const Dashboard: React.FC = () => {
   const linkRef = React.useRef<HTMLParagraphElement>(null);
+  const [events, setEvents] = React.useState<Event[]>([]);
 
   React.useEffect(() => {
-    console.log('useEffect');
-    console.log(linkRef);
+    getEvents().then((events) => {
+      const sortedEvents = events.sort((a, b) => {
+        return new Date(a.endEvent).getTime() - new Date(b.endEvent).getTime();
+      });
+      const filteredEvents = sortedEvents.filter((event) => {
+        return new Date(event.endEvent).getTime() > new Date().getTime();
+      });
+      setEvents(filteredEvents);
+    });
+  }, []);
+
+  React.useEffect(() => {
     const newValue = "broadcast3000.io/view/:idSession";
     linkRef.current && (linkRef.current.textContent = newValue);
   }, []);
 
   const copyToClipboard = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
-    console.log('click');
     const link = linkRef.current?.textContent;
-    console.log(linkRef);
     link && navigator.clipboard.writeText(link);
   };
 
@@ -46,7 +62,7 @@ const Dashboard: React.FC = () => {
           <FormulaireEvent />
         </div>
       </section>
-      {/* <ListCard /> */}
+      <ListCard events={events} />
     </main>
   );
 };
