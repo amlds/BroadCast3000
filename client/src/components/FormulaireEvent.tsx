@@ -16,6 +16,7 @@ const createEvent = async (event: Event) => {
 }
 
 const FormulaireEvent: React.FC = () => {
+  const messageRef = React.useRef<HTMLParagraphElement>(null);
   const [event, setEvent] = React.useState({
     name: '',
     startEvent: '',
@@ -33,18 +34,26 @@ const FormulaireEvent: React.FC = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     const description = document.getElementById('description') as HTMLInputElement;
-    e.preventDefault();
-    createEvent({
-      ...event,
-      description: description.value,
-      image: 'test'
-    }).then(res => {
-      console.log('Good response');
-      console.log(res);
-    }).catch(err => {
-      console.log('Bad response');
-      console.error(err);
-    });
+    //si tout les champs sont remplis on envoie le formulaire
+    if(event.name && event.startEvent && event.endEvent && event.location && description.value){
+      createEvent({
+        ...event,
+        description: description.value,
+        image: 'test'
+      }).then(res => {
+        messageRef.current!.innerHTML = '✅ Event added ✅';
+        console.log('Good response');
+        console.log(res);
+      }).catch(err => {
+        messageRef.current!.innerHTML = '🚨 Error 🚨';
+        console.log('Bad response');
+        console.error(err);
+      });
+    } else {
+      e.preventDefault();
+      messageRef.current!.innerHTML = '🚨 Veuillez remplir tous les champs 🚨';
+      console.log('Formulaire non envoyé');
+    }
   };
 
 
@@ -66,10 +75,11 @@ const FormulaireEvent: React.FC = () => {
         <textarea className='input--txt' name="description" id="description" placeholder="Get an hangorver for free with your Le Wagon mates !"></textarea>
       </label>
       <label htmlFor="location">Location
-        <input className='input--txt' type="text" name="location" id="location" placeholder="Le Wagon Paris" value={event.location} onChange={handleChange} />
+        <input className='input--txt' type="text" name="location" id="location" placeholder="Le Wagon Lyon #TheBest" value={event.location} onChange={handleChange} />
       </label>
       <input className='input--file' type="file" accept='.jpg,.png' name="image" id="image" />
-      <button className='button' type="submit">Submit</button>
+      <button className='button' type="submit">Add event</button>
+      <p ref={messageRef} className="messageAlerte"></p>
     </form>
   );
 };

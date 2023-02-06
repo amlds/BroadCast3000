@@ -25,6 +25,14 @@ form {
       font-family: 'Inter-Regular', sans-serif;
   }
 
+  .messageAlerte {
+    font-size: 16px;
+    font-weight: 400;
+    font-family: 'Inter-Regular', sans-serif;
+    width: 100%;
+    text-align: center;
+  }
+
   .input--txt {
     height: 40px;
     padding: 0 16px;
@@ -56,6 +64,13 @@ form {
       padding: 8px;
       resize: none;
       box-sizing: border-box;
+
+      &::placeholder{
+        color: #C4C2C3;
+        font-size: 16px;
+        font-weight: 400;
+        font-family: 'Inter-Regular', sans-serif;
+      }
 
       &::-webkit-scrollbar {
         width: 8px;

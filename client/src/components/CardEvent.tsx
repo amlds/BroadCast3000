@@ -28,7 +28,7 @@ const CardEvent: React.FC<props> = (event: props) => {
         <h3>
           {structureTime(event.event.startEvent)}
         </h3>
-        <button className="button--edit"><Edit /> Edit</button>
+        <button className="button--edit cardEvent__content__buttonEdit"><Edit /> Edit</button>
       </div>
       <div className="cardEvent__content">
         <h3 className="cardEvent__content__title">{event.event.name}</h3>

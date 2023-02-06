@@ -15,7 +15,13 @@ const ListCard: React.FC = () => {
 
   React.useEffect(() => {
     getEvents().then((events) => {
-      setEvents(events);
+      const sortedEvents = events.sort((a, b) => {
+        return new Date(a.endEvent).getTime() - new Date(b.endEvent).getTime();
+      });
+      const filteredEvents = sortedEvents.filter((event) => {
+        return new Date(event.endEvent).getTime() > new Date().getTime();
+      });
+      setEvents(filteredEvents);
     });
   }, []);
 

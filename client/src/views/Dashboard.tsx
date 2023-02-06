@@ -8,6 +8,23 @@ import Copy from '../components/svg/CopyIcones';
 
 
 const Dashboard: React.FC = () => {
+  const linkRef = React.useRef<HTMLParagraphElement>(null);
+
+  React.useEffect(() => {
+    console.log('useEffect');
+    console.log(linkRef);
+    const newValue = "broadcast3000.io/view/:idSession";
+    linkRef.current && (linkRef.current.textContent = newValue);
+  }, []);
+
+  const copyToClipboard = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+    console.log('click');
+    const link = linkRef.current?.textContent;
+    console.log(linkRef);
+    link && navigator.clipboard.writeText(link);
+  };
+
+
   return (
     <main className='dashboard'>
       <section className='dashboard__content'>
@@ -22,8 +39,8 @@ const Dashboard: React.FC = () => {
           <div className='link__device'>
             <p>Here is your link to the viewer screen :</p>
             <div className='link__device-copy'>
-              <p className='text-normal'>broadcast3000.io/view/2987nd983p</p>
-              <button><Copy /></button>
+              <p ref={linkRef}>broadcast3000.io/view/2987nd983p</p>
+              <button onClick={copyToClipboard}><Copy /></button>
             </div>
           </div>
           <FormulaireEvent />
