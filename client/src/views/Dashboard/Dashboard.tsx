@@ -2,9 +2,9 @@ import React from 'react';
 
 import '../assets/views/dashboard.scss'
 
-import ListCard from '../components/ListCard';
-import FormulaireEvent from '../components/FormulaireEvent';
-import Copy from '../components/svg/CopyIcones';
+/* import ListCard from '../components/old/ListCard'; */
+import FormulaireEvent from '../../components/FormulaireEvent';
+import Copy from '../../components/svg/CopyIcones';
 
 
 const Dashboard: React.FC = () => {
@@ -46,7 +46,7 @@ const Dashboard: React.FC = () => {
           <FormulaireEvent />
         </div>
       </section>
-      <ListCard />
+      {/* <ListCard /> */}
     </main>
   );
 };

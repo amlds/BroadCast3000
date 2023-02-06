@@ -1,18 +1,12 @@
 import React from "react";
 
 import Edit from "./svg/Edit";
+import event from "../types/Event";
 
 
 type props = {
-  event: {
-    name: string,
-    description: string,
-    startEvent: string,
-    endEvent: string,
-    location: string,
-    image: string,
-  }
-}
+  event: event;
+};
 
 const CardEvent: React.FC<props> = (event: props) => {
   const eventRef = React.useRef<HTMLDivElement>(null);

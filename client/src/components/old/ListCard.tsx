@@ -1,9 +1,9 @@
 import React from 'react';
 
-import EventService from '../services/EventService';
-import Event from '../types/Event'
+import EventService from '../../services/EventService';
+import Event from '../../types/Event'
 
-import CardEvent from './CardEvent';
+import CardEvent from '../CardEvent';
 
 const getEvents = async () => {
   const events = await EventService.getEvents();

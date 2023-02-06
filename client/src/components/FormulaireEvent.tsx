@@ -39,7 +39,8 @@ const FormulaireEvent: React.FC = () => {
       createEvent({
         ...event,
         description: description.value,
-        image: 'test'
+        image: 'test',
+        id: 0
       }).then(res => {
         messageRef.current!.innerHTML = '✅ Event added ✅';
         console.log('Good response');
@@ -65,7 +66,7 @@ const FormulaireEvent: React.FC = () => {
       </label>
       <div className='align-row'>
         <label htmlFor="startEvent">Start
-          <input className='input--txt' type="datetime-local" name="startEvent" id="startEvent" value={event.startEvent} onChange={handleChange} />
+          <input className='input--txt' type="datetime-local" name="startEvent" id="startEvent" value={event.startEvent} onChange={handleChange} max="2040-01-01"/>
         </label>
         <label htmlFor="endEvent">End
           <input className='input--txt' type="datetime-local" name="endEvent" id="endEvent" value={event.endEvent} onChange={handleChange} />
