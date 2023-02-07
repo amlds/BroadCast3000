@@ -15,7 +15,7 @@ const createEvent = async (event: Event) => {
   return newEvent;
 }
 
-const FormulaireEvent: React.FC = () => {
+const FormulaireCreateEvent: React.FC = () => {
   const messageRef = React.useRef<HTMLParagraphElement>(null);
   const [event, setEvent] = React.useState({
     name: '',
@@ -34,25 +34,20 @@ const FormulaireEvent: React.FC = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     const description = document.getElementById('description') as HTMLInputElement;
-    //si tout les champs sont remplis on envoie le formulaire
     if(event.name && event.startEvent && event.endEvent && event.location && description.value){
       createEvent({
         ...event,
         description: description.value,
-        image: 'test'
+        image: 'test',
+        id: 0
       }).then(res => {
         messageRef.current!.innerHTML = '✅ Event added ✅';
-        console.log('Good response');
-        console.log(res);
       }).catch(err => {
         messageRef.current!.innerHTML = '🚨 Error 🚨';
-        console.log('Bad response');
-        console.error(err);
       });
     } else {
       e.preventDefault();
       messageRef.current!.innerHTML = '🚨 Veuillez remplir tous les champs 🚨';
-      console.log('Formulaire non envoyé');
     }
   };
 
@@ -65,7 +60,7 @@ const FormulaireEvent: React.FC = () => {
       </label>
       <div className='align-row'>
         <label htmlFor="startEvent">Start
-          <input className='input--txt' type="datetime-local" name="startEvent" id="startEvent" value={event.startEvent} onChange={handleChange} />
+          <input className='input--txt' type="datetime-local" name="startEvent" id="startEvent" value={event.startEvent} onChange={handleChange} max="2040-01-01"/>
         </label>
         <label htmlFor="endEvent">End
           <input className='input--txt' type="datetime-local" name="endEvent" id="endEvent" value={event.endEvent} onChange={handleChange} />
@@ -78,10 +73,10 @@ const FormulaireEvent: React.FC = () => {
         <input className='input--txt' type="text" name="location" id="location" placeholder="Le Wagon Lyon #TheBest" value={event.location} onChange={handleChange} />
       </label>
       <input className='input--file' type="file" accept='.jpg,.png' name="image" id="image" />
-      <button className='button' type="submit">Add event</button>
+      <button type="submit">Add event</button>
       <p ref={messageRef} className="messageAlerte"></p>
     </form>
   );
 };
 
-export default FormulaireEvent;
+export default FormulaireCreateEvent;

@@ -1,18 +1,22 @@
 import React from "react";
 
+import EventService from "../services/EventService";
+
 import Edit from "./svg/Edit";
+import event from "../types/Event";
+import { Link } from "react-router-dom";
 
-
-type props = {
-  event: {
-    name: string,
-    description: string,
-    startEvent: string,
-    endEvent: string,
-    location: string,
-    image: string,
+const deleteEvent = async (id: number) => {
+  // eslint-disable-next-line no-restricted-globals
+  let submit = confirm('Are you sure?');
+  if(submit) {
+    await EventService.deleteEvent(id);
   }
 }
+
+type props = {
+  event: event;
+};
 
 const CardEvent: React.FC<props> = (event: props) => {
   const eventRef = React.useRef<HTMLDivElement>(null);
@@ -28,7 +32,10 @@ const CardEvent: React.FC<props> = (event: props) => {
         <h3>
           {structureTime(event.event.startEvent)}
         </h3>
-        <button className="button--edit cardEvent__content__buttonEdit"><Edit /> Edit</button>
+        <div className="cardEvent__header__button">
+          <Link className="button--edit cardEvent__content__buttonEdit" to={`/dashboard/${event.event.id}`}><Edit /> Edit</Link>
+          <button onClick={() => deleteEvent(event.event.id)} className="button--delete">X</button>
+        </div>
       </div>
       <div className="cardEvent__content">
         <h3 className="cardEvent__content__title">{event.event.name}</h3>

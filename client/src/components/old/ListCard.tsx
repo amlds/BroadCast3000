@@ -1,17 +1,16 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 
-import EventService from '../services/EventService';
-import Event from '../types/Event'
+import EventService from '../../services/EventService';
+import Event from '../../types/Event'
 
-import ListCard from '../components/ListCard';
+import CardEvent from '../CardEvent';
 
 const getEvents = async () => {
   const events = await EventService.getEvents();
   return events;
 }
 
-const Home: React.FC = () => {
+const ListCard: React.FC = () => {
   const [events, setEvents] = React.useState<Event[]>([]);
 
   React.useEffect(() => {
@@ -27,18 +26,17 @@ const Home: React.FC = () => {
   }, []);
 
   return (
-    <div>
-      <h1>Bienvenue sur broasdcast3000</h1>
-      <Link to="/dashboard">Dashboard</Link>
-      <Link to="/login">Login</Link>
-      <Link to="/device">Device</Link>
-
-      <section>
-        <h2>Les derniers événements</h2>
-        <ListCard events={events} />
-      </section>
+    <div className="listCard">
+      <span className='shadow'></span>
+      <h2 className='listCard__title'>Nos prochains events :</h2>
+      <div className='listCard__content'>
+        {Object.values(events).map((event: Event) => (
+          <CardEvent event={event}/>
+          ))}
+      </div>
+      <span className='shadow'></span>
     </div>
   );
 };
 
-export default Home;
+export default ListCard;
