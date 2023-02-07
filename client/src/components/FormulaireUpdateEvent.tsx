@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
 
 import EventService from '../services/EventService';
 import Event from '../types/Event'
@@ -67,6 +67,7 @@ const FormulaireUpdateEvent: React.FC = () => {
       messageRef.current!.innerHTML = '❌ Please fill all the fields ❌';
     }
     e.preventDefault();
+
   }
 
 
@@ -92,7 +93,7 @@ const FormulaireUpdateEvent: React.FC = () => {
       <input className='input--file' type="file" accept='.jpg,.png' name="image" id="image"/>
       <div className='align-row twoButtonSet'>
         <Link to='/dashboard' className='button'>Return</Link>
-        <button className='button' type="submit">Update event</button>
+        <button type="submit">Update event</button>
       </div>
       <p ref={messageRef} className="messageAlerte"></p>
     </form>

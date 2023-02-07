@@ -34,7 +34,6 @@ const FormulaireCreateEvent: React.FC = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     const description = document.getElementById('description') as HTMLInputElement;
-    //si tout les champs sont remplis on envoie le formulaire
     if(event.name && event.startEvent && event.endEvent && event.location && description.value){
       createEvent({
         ...event,
@@ -74,7 +73,7 @@ const FormulaireCreateEvent: React.FC = () => {
         <input className='input--txt' type="text" name="location" id="location" placeholder="Le Wagon Lyon #TheBest" value={event.location} onChange={handleChange} />
       </label>
       <input className='input--file' type="file" accept='.jpg,.png' name="image" id="image" />
-      <button className='button' type="submit">Add event</button>
+      <button type="submit">Add event</button>
       <p ref={messageRef} className="messageAlerte"></p>
     </form>
   );

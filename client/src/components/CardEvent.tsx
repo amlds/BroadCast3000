@@ -7,8 +7,11 @@ import event from "../types/Event";
 import { Link } from "react-router-dom";
 
 const deleteEvent = async (id: number) => {
-  await EventService.deleteEvent(id);
-  window.location.reload();
+  // eslint-disable-next-line no-restricted-globals
+  let submit = confirm('Are you sure?');
+  if(submit) {
+    await EventService.deleteEvent(id);
+  }
 }
 
 type props = {
