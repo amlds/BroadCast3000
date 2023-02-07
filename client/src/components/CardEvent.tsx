@@ -1,8 +1,14 @@
 import React from "react";
 
+import EventService from "../services/EventService";
+
 import Edit from "./svg/Edit";
 import event from "../types/Event";
+import { Link } from "react-router-dom";
 
+const deleteEvent = async (id: number) => {
+  await EventService.deleteEvent(id);
+}
 
 type props = {
   event: event;
@@ -22,7 +28,8 @@ const CardEvent: React.FC<props> = (event: props) => {
         <h3>
           {structureTime(event.event.startEvent)}
         </h3>
-        <button className="button--edit cardEvent__content__buttonEdit"><Edit /> Edit</button>
+        <Link className="button--edit cardEvent__content__buttonEdit" to={`/dashboard/${event.event.id}`}><Edit /> Edit</Link>
+        <button onClick={deleteEvent(event.event.id)} className="button--delete cardEvent__content__buttonDelete">Delete</button>
       </div>
       <div className="cardEvent__content">
         <h3 className="cardEvent__content__title">{event.event.name}</h3>

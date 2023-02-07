@@ -40,7 +40,7 @@ export class EventController {
     return updatedEvent;
   }
 
-  static async deleteEvent(id: string): Promise<Event> {
+  static async deleteEvent(id: number): Promise<Event> {
     const response = await fetch(`http://localhost:4000/events/${id}`, {
       method: 'DELETE',
     });
