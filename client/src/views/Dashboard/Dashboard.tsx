@@ -5,8 +5,7 @@ import Event from '../../types/Event';
 import '../../assets/views/dashboard.scss';
 
 import ListCard from '../../components/ListCard';
-import FormulaireEvent from '../../components/FormulaireEvent';
-import Copy from '../../components/svg/CopyIcones';
+import FormulaireCreateEvent from '../../components/FormulaireCreateEvent';
 
 const getEvents = async () => {
   const events = await EventService.getEvents();
@@ -14,7 +13,6 @@ const getEvents = async () => {
 }
 
 const Dashboard: React.FC = () => {
-  const linkRef = React.useRef<HTMLParagraphElement>(null);
   const [events, setEvents] = React.useState<Event[]>([]);
 
   React.useEffect(() => {
@@ -29,17 +27,6 @@ const Dashboard: React.FC = () => {
     });
   }, []);
 
-  React.useEffect(() => {
-    const newValue = "broadcast3000.io/view/:idSession";
-    linkRef.current && (linkRef.current.textContent = newValue);
-  }, []);
-
-  const copyToClipboard = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
-    const link = linkRef.current?.textContent;
-    link && navigator.clipboard.writeText(link);
-  };
-
-
   return (
     <main className='dashboard'>
       <section className='dashboard__content'>
@@ -51,14 +38,10 @@ const Dashboard: React.FC = () => {
           </div>
         </header>
         <div className='dashboard__content--form'>
-          <div className='link__device'>
-            <p>Here is your link to the viewer screen :</p>
-            <div className='link__device-copy'>
-              <p ref={linkRef}>broadcast3000.io/view/2987nd983p</p>
-              <button onClick={copyToClipboard}><Copy /></button>
-            </div>
+          <div className='form__link'>
+            <p className='text-normal'>Lien de la session</p>
           </div>
-          <FormulaireEvent />
+          <FormulaireCreateEvent />
         </div>
       </section>
       <ListCard events={events} />

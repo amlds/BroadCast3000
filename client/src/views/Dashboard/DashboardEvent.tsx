@@ -6,20 +6,17 @@ import Event from '../../types/Event';
 import '../../assets/views/dashboard.scss';
 
 import ListCard from '../../components/ListCard';
-import FormulaireEvent from '../../components/FormulaireEvent';
+import FormulaireUpdateEvent from '../../components/FormulaireUpdateEvent';
+import { useParams } from 'react-router-dom';
 
 const getEvents = async () => {
   const events = await EventService.getEvents();
   return events;
 }
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-const getEventById = async (id: string) => {
-  const event = await EventService.getEventById(id);
-  return event;
-}
 
 const DashboardEvent: React.FC = () => {
+  const id = useParams();
   const [events, setEvents] = React.useState<Event[]>([]);
 
   React.useEffect(() => {
@@ -34,6 +31,7 @@ const DashboardEvent: React.FC = () => {
     });
   }, []);
 
+
   return (
     <main className='dashboard'>
       <section className='dashboard__content'>
@@ -45,12 +43,10 @@ const DashboardEvent: React.FC = () => {
           </div>
         </header>
         <div className='dashboard__content--form'>
-          <div className='link__device'>
-            <p>Here is your link to the viewer screen :</p>
-            <div className='link__device-copy'>
-            </div>
+          <div className='form__link'>
+            <p className='text-normal'>Lien de la session</p>
           </div>
-          <FormulaireEvent />
+          <FormulaireUpdateEvent />
         </div>
       </section>
       <ListCard events={events} />

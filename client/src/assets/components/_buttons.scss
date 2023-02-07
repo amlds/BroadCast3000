@@ -42,3 +42,28 @@ button {
     border: 1px solid #33156E;
   }
 }
+
+.button--delete {
+  background-color: #E40D06;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  color: #FAFAFA;
+  cursor: pointer;
+  padding: 4px 12px;
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.5;
+  text-decoration: none;
+  white-space: nowrap;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+
+  transition: border .3s ease-in-out;
+
+  &:hover {
+    border: 1px solid #FAFAFA;
+  }
+}

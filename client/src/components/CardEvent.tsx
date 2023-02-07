@@ -8,6 +8,7 @@ import { Link } from "react-router-dom";
 
 const deleteEvent = async (id: number) => {
   await EventService.deleteEvent(id);
+  window.location.reload();
 }
 
 type props = {
@@ -28,8 +29,10 @@ const CardEvent: React.FC<props> = (event: props) => {
         <h3>
           {structureTime(event.event.startEvent)}
         </h3>
-        <Link className="button--edit cardEvent__content__buttonEdit" to={`/dashboard/${event.event.id}`}><Edit /> Edit</Link>
-        <button onClick={deleteEvent(event.event.id)} className="button--delete cardEvent__content__buttonDelete">Delete</button>
+        <div className="cardEvent__header__button">
+          <Link className="button--edit cardEvent__content__buttonEdit" to={`/dashboard/${event.event.id}`}><Edit /> Edit</Link>
+          <button onClick={() => deleteEvent(event.event.id)} className="button--delete">X</button>
+        </div>
       </div>
       <div className="cardEvent__content">
         <h3 className="cardEvent__content__title">{event.event.name}</h3>

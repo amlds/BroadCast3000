@@ -15,7 +15,7 @@ const createEvent = async (event: Event) => {
   return newEvent;
 }
 
-const FormulaireEvent: React.FC = () => {
+const FormulaireCreateEvent: React.FC = () => {
   const messageRef = React.useRef<HTMLParagraphElement>(null);
   const [event, setEvent] = React.useState({
     name: '',
@@ -80,4 +80,4 @@ const FormulaireEvent: React.FC = () => {
   );
 };
 
-export default FormulaireEvent;
+export default FormulaireCreateEvent;

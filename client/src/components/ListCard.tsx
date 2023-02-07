@@ -3,14 +3,11 @@ import React from 'react';
 import Event from '../types/Event';
 import CardEvent from './CardEvent';
 
-
 interface Props {
   events: Event[];
 }
 
-
 const ListCard: React.FC<Props> = ({ events }) => {
-
   return (
     <div className="listCard">
       <span className='shadow'></span>

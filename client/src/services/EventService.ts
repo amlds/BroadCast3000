@@ -11,6 +11,7 @@ export class EventController {
   }
 
   static async getEventById(id: string): Promise<Event> {
+    console.log(id);
     const response = await fetch(`http://localhost:4000/events/${id}`);
     const event: Event = await response.json();
     return event;
@@ -41,7 +42,7 @@ export class EventController {
   }
 
   static async deleteEvent(id: number): Promise<Event> {
-    const response = await fetch(`http://localhost:4000/events/${id}`, {
+    const response = await fetch(`http://localhost:4000/events/delete/${id}`, {
       method: 'DELETE',
     });
     const deletedEvent: Event = await response.json();
