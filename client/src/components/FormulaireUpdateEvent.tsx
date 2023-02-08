@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, Navigate } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 
 import EventService from '../services/EventService';
 import Event from '../types/Event'
@@ -30,10 +30,8 @@ const FormulaireUpdateEvent: React.FC = () => {
   const [endEvent, setEndEvent] = React.useState(event.endEvent);
   const [description, setDescription] = React.useState(event.description);
   const [location, setLocation] = React.useState(event.location);
-
-  const id = window.location.pathname.split('/')[2];
+  let id = useParams().id as string;
   const messageRef = React.useRef<HTMLParagraphElement>(null);
-
 
   React.useEffect(() => {
     getEventById(id).then((event) => {
@@ -59,15 +57,14 @@ const FormulaireUpdateEvent: React.FC = () => {
         location: location,
         id: event.id
       }).then(res => {
-        messageRef.current!.innerHTML = '✅ Event updated ✅';
+        messageRef.current!.innerHTML = '✅ Event added ✅';
       }).catch(err => {
-        messageRef.current!.innerHTML = '❌ Error ❌';
+        messageRef.current!.innerHTML = '🚨 Erreur 🚨';
       });
     } else {
-      messageRef.current!.innerHTML = '❌ Please fill all the fields ❌';
+      messageRef.current!.innerHTML = '🚨 Veuillez remplir tous les champs 🚨';
     }
     e.preventDefault();
-
   }
 
 
@@ -91,8 +88,8 @@ const FormulaireUpdateEvent: React.FC = () => {
         <input className='input--txt' type="text" name="location" id="location" placeholder="Le Wagon Lyon #TheBest" value={location} onChange={(e) => setLocation(e.target.value)}/>
       </label>
       <input className='input--file' type="file" accept='.jpg,.png' name="image" id="image"/>
-      <div className='align-row twoButtonSet'>
-        <Link to='/dashboard' className='button'>Return</Link>
+      <div className='twoButtonSet'>
+        <Link to='/dashboard' className='button'>Cancel</Link>
         <button type="submit">Update event</button>
       </div>
       <p ref={messageRef} className="messageAlerte"></p>

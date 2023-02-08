@@ -43,7 +43,7 @@ const FormulaireCreateEvent: React.FC = () => {
       }).then(res => {
         messageRef.current!.innerHTML = '✅ Event added ✅';
       }).catch(err => {
-        messageRef.current!.innerHTML = '🚨 Error 🚨';
+        messageRef.current!.innerHTML = '🚨 Erreur 🚨';
       });
     } else {
       e.preventDefault();

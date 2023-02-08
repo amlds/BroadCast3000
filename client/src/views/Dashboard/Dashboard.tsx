@@ -4,8 +4,9 @@ import Event from '../../types/Event';
 
 import '../../assets/views/dashboard.scss';
 
+import DashboardConfig from '../../components/DashboardConfig';
+
 import ListCard from '../../components/ListCard';
-import FormulaireCreateEvent from '../../components/FormulaireCreateEvent';
 
 const getEvents = async () => {
   const events = await EventService.getEvents();
@@ -37,12 +38,7 @@ const Dashboard: React.FC = () => {
             <p className='text-normal'>[Insérer une phrase drôle ici]</p>
           </div>
         </header>
-        <div className='dashboard__content--form'>
-          <div className='form__link'>
-            <p className='text-normal'>Lien de la session</p>
-          </div>
-          <FormulaireCreateEvent />
-        </div>
+          <DashboardConfig />
       </section>
       <ListCard events={events} />
     </main>

@@ -1,31 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import EventService from '../services/EventService';
-import Event from '../types/Event'
+import DashboardConfig from '../components/DashboardConfig';
 
-import ListCard from '../components/ListCard';
-
-const getEvents = async () => {
-  const events = await EventService.getEvents();
-  return events;
-}
 
 const Home: React.FC = () => {
-  const [events, setEvents] = React.useState<Event[]>([]);
-
-  React.useEffect(() => {
-    getEvents().then((events) => {
-      const sortedEvents = events.sort((a, b) => {
-        return new Date(a.endEvent).getTime() - new Date(b.endEvent).getTime();
-      });
-      const filteredEvents = sortedEvents.filter((event) => {
-        return new Date(event.endEvent).getTime() > new Date().getTime();
-      });
-      setEvents(filteredEvents);
-    });
-  }, []);
-
   return (
     <div>
       <h1>Bienvenue sur broasdcast3000</h1>
@@ -35,7 +14,7 @@ const Home: React.FC = () => {
 
       <section>
         <h2>Les derniers événements</h2>
-        <ListCard events={events} />
+        <DashboardConfig/>
       </section>
     </div>
   );

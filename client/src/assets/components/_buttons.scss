@@ -19,7 +19,7 @@ button {
 
 .button {
   background-color: #E40D06;
-
+  width: 100%;
   border: 1px solid transparent;
   border-radius: 8px;
   color: #FAFAFA;
@@ -84,5 +84,20 @@ button {
 
   &:hover {
     border: 1px solid #FAFAFA;
+  }
+}
+
+.twoButtonSet {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+
+  // premiére enfant
+  & > *:first-child {
+    background-color: transparent;
+    color: #E40D06;
+    border-color: #E40D06;
   }
 }
