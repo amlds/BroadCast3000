@@ -6,9 +6,10 @@ import Edit from "./svg/Edit";
 import event from "../types/Event";
 import { Link, useParams } from "react-router-dom";
 
+
 const deleteEvent = async (id: number) => {
   // eslint-disable-next-line no-restricted-globals
-  let submit = confirm('Are you sure?');
+  const submit = confirm('Are you sure?');
   if(submit) {
     await EventService.deleteEvent(id);
   }
@@ -22,6 +23,8 @@ const CardEvent: React.FC<props> = (event: props) => {
   const eventRef = React.useRef<HTMLDivElement>(null);
   const cardRef = React.useRef<HTMLDivElement>(null);
   let id = useParams().id as unknown as number;
+
+
 
   const structureTime = (time: string) => {
     const date = new Date(time);

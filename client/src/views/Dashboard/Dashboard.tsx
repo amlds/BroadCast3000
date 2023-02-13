@@ -1,11 +1,11 @@
 import React from 'react';
+
 import EventService from '../../services/EventService';
 import Event from '../../types/Event';
 
 import '../../assets/views/dashboard.scss';
 
 import DashboardConfig from '../../components/DashboardConfig';
-
 import ListCard from '../../components/ListCard';
 
 const getEvents = async () => {
@@ -15,6 +15,7 @@ const getEvents = async () => {
 
 const Dashboard: React.FC = () => {
   const [events, setEvents] = React.useState<Event[]>([]);
+
 
   React.useEffect(() => {
     getEvents().then((events) => {
