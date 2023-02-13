@@ -9,24 +9,22 @@ const DashboardConfig: React.FC = () => {
   return (
     <section className="dashboard__config">
       <nav>
-        <button className="dashboard__config__menu__item__button"
+        <button className="nav_button"
                 onClick={() => setMenu('event')}>
-                event
+                Event
         </button>
-        <button className="dashboard__config__menu__item__button"
+        <button className="nav_button"
                 onClick={() => setMenu('challenge')}>
-                challenge
+                Challenge
         </button>
-        <button className="dashboard__config__menu__item__button"
+        <button className="nav_button"
                 onClick={() => setMenu('config')}>
-                config
+                Config
         </button>
       </nav>
-      <div>
-        {menu === 'event' && <FormulaireCreateEvent/>}
-        {menu === 'challenge' && <p>challenge</p>}
-        {menu === 'config' && <p>config</p>}
-      </div>
+      {menu === 'event' && <FormulaireCreateEvent/>}
+      {menu === 'challenge' && <p>challenge</p>}
+      {menu === 'config' && <p>config</p>}
     </section>
   )
 };
