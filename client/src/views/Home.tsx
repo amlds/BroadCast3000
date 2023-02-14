@@ -1,26 +1,29 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 
-import { createContext } from "react";
+import Toolbar from '../components/Toolbar';
 
-import SwitchTheme from '../components/SwitchTheme';
+import ThemeContext from '../context/ThemeContext';
 
-type ThemeContextType = "light" | "dark";
 
-const ThemeContext = createContext<ThemeContextType>("light");
 
 const Home: React.FC = () => {
-  const [theme, setTheme] = React.useState<ThemeContextType>("light");
+  const [theme, setTheme] = React.useState(false);
+
+  const toggleTheme = () => {
+    setTheme(prevTheme => !prevTheme);
+  };
+
+  React.useEffect(() => {
+    console.log(theme);
+  }, [theme]);
+
 
   return (
     <div>
-      <h1>Bienvenue sur broasdcast3000</h1>
-      <Link to="/dashboard">Dashboard</Link>
-      <Link to="/login">Login</Link>
-      <Link to="/device">Device</Link>
-
-      <ThemeContext.Provider value={theme}>
-        <SwitchTheme setTheme={setTheme} />
+      <ThemeContext.Provider value={{ theme, toggleTheme }}>
+        <div className={theme === true ? 'dark' : 'light'}>
+          <Toolbar />
+        </div>
       </ThemeContext.Provider>
     </div>
   );
