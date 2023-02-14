@@ -1,14 +1,18 @@
 import React from 'react';
 
+import EventUpdate from '../types/EventUpdate';
+
+
+
 interface IEventContext {
-  isUpdate: boolean;
-  toggleUpdate: () => void;
+  eventsUpdate: EventUpdate[];
+  toggleIsUpdate: () => void;
 }
 
 const defaultState = {
-  isUpdate: false,
+  eventsUpdate: [],
 };
 
-const EventContext = React.createContext(defaultState as IEventContext);
+const EventContext = React.createContext(defaultState as unknown as IEventContext);
 
 export default EventContext;

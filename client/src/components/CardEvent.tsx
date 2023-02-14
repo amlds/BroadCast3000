@@ -27,8 +27,6 @@ const CardEvent: React.FC<props> = (event: props) => {
   const { toggleUpdate } = React.useContext(EventContext);
   let id = useParams().id as unknown as number;
 
-
-
   const structureTime = (time: string) => {
     const date = new Date(time);
     return `${date.toLocaleDateString('fr-FR', { month: 'long', day: 'numeric' })} à ${date.toLocaleTimeString('fr-FR', { hour: 'numeric', minute: 'numeric' })}`;
@@ -44,6 +42,17 @@ const CardEvent: React.FC<props> = (event: props) => {
     }
   }, [event.event.id, id]);
 
+  const toggleIsUpdate = (id: string) => {
+    setEventsUpdate(prevEvents =>
+      prevEvents.map(event => {
+        if (event.id === id) {
+          return { ...event, isUpdate: !event.isUpdate };
+        }
+        return event;
+      })
+    );
+  };
+
   return (
     <div className="cardEvent" ref={eventRef}>
       <div className="cardEvent__header">
@@ -51,9 +60,8 @@ const CardEvent: React.FC<props> = (event: props) => {
           {structureTime(event.event.startEvent)}
         </h3>
         <div className="cardEvent__header__button">
-          <Link className="button--edit cardEvent__content__buttonEdit" to={`/dashboard/${event.event.id}`}><Edit /> Edit</Link>
+          <button onClick={toggleUpdate} className="button--edit cardEvent__content__buttonEdit"><Edit /> Edit</button>
           <button onClick={() => deleteEvent(event.event.id)} className="button--delete">X</button>
-          <button onClick={toggleUpdate}>Toggle</button>
         </div>
       </div>
       <div ref={cardRef} className="cardEvent__content">
