@@ -1,12 +1,12 @@
 import React from "react";
-import ThemeContext from "../context/ThemeContext";
+import EventContext from "../context/EventContext";
 
 const Toolbar: React.FC = () => {
-  const { toggleTheme } = React.useContext(ThemeContext);
+  const { toggleUpdate } = React.useContext(EventContext);
 
   return (
     <div>
-      <button onClick={toggleTheme}>Toggle</button>
+      <button onClick={toggleUpdate}>Toggle</button>
     </div>
   );
 };

@@ -2,6 +2,8 @@ import React from "react";
 
 import EventService from "../services/EventService";
 
+import EventContext from "../context/EventContext";
+
 import Edit from "./svg/Edit";
 import event from "../types/Event";
 import { Link, useParams } from "react-router-dom";
@@ -22,6 +24,7 @@ type props = {
 const CardEvent: React.FC<props> = (event: props) => {
   const eventRef = React.useRef<HTMLDivElement>(null);
   const cardRef = React.useRef<HTMLDivElement>(null);
+  const { toggleUpdate } = React.useContext(EventContext);
   let id = useParams().id as unknown as number;
 
 
@@ -50,6 +53,7 @@ const CardEvent: React.FC<props> = (event: props) => {
         <div className="cardEvent__header__button">
           <Link className="button--edit cardEvent__content__buttonEdit" to={`/dashboard/${event.event.id}`}><Edit /> Edit</Link>
           <button onClick={() => deleteEvent(event.event.id)} className="button--delete">X</button>
+          <button onClick={toggleUpdate}>Toggle</button>
         </div>
       </div>
       <div ref={cardRef} className="cardEvent__content">
