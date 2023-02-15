@@ -42,6 +42,12 @@ font-size: 16px;
     background-color: #FAFAFA;
     color: #1B1A21;
     border: 1px solid #1B1A21;
+
+    &--red {
+      background-color: #FAFAFA;
+      color: #E40D06;
+      border: 1px solid #E40D06;
+    }
   }
 }
 

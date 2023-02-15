@@ -55,7 +55,7 @@ const FromulaireEvent: React.FC = () => {
       <label htmlFor="location">Location
         <input className='input--txt' type="text" name="location" id="location" placeholder="Location" value={event.location} onChange={handleChange} />
       </label>
-      <button className='btn--submit' type="submit">Submit</button>
+      <button className='button--primary' type="submit">Submit</button>
       <p ref={messageRef}></p>
     </form>
   );

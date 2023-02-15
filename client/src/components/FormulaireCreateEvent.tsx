@@ -73,7 +73,7 @@ const FormulaireCreateEvent: React.FC = () => {
         <input className='input--txt' type="text" name="location" id="location" placeholder="Le Wagon Lyon #TheBest" value={event.location} onChange={handleChange} />
       </label>
       <input className='input--file' type="file" accept='.jpg,.png' name="image" id="image" />
-      <button type="submit">Add event</button>
+      <button className='button--primary' type="submit">Add event</button>
       <p ref={messageRef} className="messageAlerte"></p>
     </form>
   );

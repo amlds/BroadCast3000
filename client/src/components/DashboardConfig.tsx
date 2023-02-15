@@ -5,7 +5,7 @@ import Settings from './Settings';
 
 
 const DashboardConfig: React.FC = () => {
-  const [menu, setMenu] = React.useState('Settings');
+  const [menu, setMenu] = React.useState('Events');
 
   const handlClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     if (e.currentTarget.textContent)
@@ -24,18 +24,20 @@ const DashboardConfig: React.FC = () => {
 
   return (
     <section className="dashboard__config">
-      <nav>
-        <button className="nav__button"
-                onClick={handlClick}>
-                Events
-        </button>
-        <button className="nav__button"
-                onClick={handlClick}>
-                Settings
-        </button>
-      </nav>
-      {menu === 'Events' && <EventsConfig />}
-      {menu === 'Settings' && <Settings />}
+      <div className="container--dashboard">
+        <nav>
+          <button className="nav__button"
+                  onClick={handlClick}>
+                  Events
+          </button>
+          <button className="nav__button"
+                  onClick={handlClick}>
+                  Settings
+          </button>
+        </nav>
+        {menu === 'Events' && <EventsConfig />}
+        {menu === 'Settings' && <Settings />}
+      </div>
     </section>
   )
 };

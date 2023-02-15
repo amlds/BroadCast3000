@@ -20,7 +20,7 @@ const LinkDevice: React.FC = () => {
       <p>Here is your link to the viewer screen :</p>
       <div className='link__device-copy'>
         <p ref={linkRef}>broadcast3000.io/view/2987nd983p</p>
-        <button onClick={copyToClipboard}><Copy /></button>
+        <button className='button--primary' onClick={copyToClipboard}><Copy /></button>
       </div>
     </div>
   );

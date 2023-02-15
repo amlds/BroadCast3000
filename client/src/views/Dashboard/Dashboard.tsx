@@ -7,6 +7,7 @@ import '../../assets/views/dashboard.scss';
 
 import DashboardConfig from '../../components/DashboardConfig';
 import ListCard from '../../components/ListCard';
+import LinkDevice from '../../components/LinkDevice';
 
 const getEvents = async () => {
   const events = await EventService.getEvents();
@@ -33,13 +34,15 @@ const Dashboard: React.FC = () => {
     <main className='dashboard'>
       <section className='dashboard__content'>
         <header>
-          <img className='logo' src='./images/Logo_wagon_white.png' alt='Wagon Logo'></img>
-          <div className='header__txt'>
-            <h2>Hello 'const [name, setName] = React.useState(get.api)'</h2>
-            <p className='text-normal'>[Insérer une phrase drôle ici]</p>
+          <div className="container--dashboard">
+            <img className='logo' src='./images/Logo_wagon_white.png' alt='Wagon Logo'></img>
+            <div className='header__txt'>
+              <h2>Hello Marina !</h2>
+              <LinkDevice/>
+            </div>
           </div>
         </header>
-          <DashboardConfig />
+        <DashboardConfig />
       </section>
       <ListCard events={events} />
     </main>
