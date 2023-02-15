@@ -2,13 +2,16 @@ import React from "react";
 
 import EventService from "../services/EventService";
 
+/* import EventContext, { defaultState } from '../context/EventContext'; */
+
 import Edit from "./svg/Edit";
 import event from "../types/Event";
-import { Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
+
 
 const deleteEvent = async (id: number) => {
   // eslint-disable-next-line no-restricted-globals
-  let submit = confirm('Are you sure?');
+  const submit = confirm('Are you sure?');
   if(submit) {
     await EventService.deleteEvent(id);
   }
@@ -20,11 +23,39 @@ type props = {
 
 const CardEvent: React.FC<props> = (event: props) => {
   const eventRef = React.useRef<HTMLDivElement>(null);
+  const cardRef = React.useRef<HTMLDivElement>(null);
+  let id = useParams().id as unknown as number;
 
   const structureTime = (time: string) => {
     const date = new Date(time);
     return `${date.toLocaleDateString('fr-FR', { month: 'long', day: 'numeric' })} à ${date.toLocaleTimeString('fr-FR', { hour: 'numeric', minute: 'numeric' })}`;
   };
+
+  React.useEffect(() => {
+    const card = cardRef.current!;
+    // eslint-disable-next-line eqeqeq
+    if (event.event.id == id) {
+      card.classList.add('cardEvent__content--active');
+    } else {
+      card.classList.remove('cardEvent__content--active');
+    }
+  }, [event.event.id, id]);
+
+  React.useEffect(() => {
+    const event = eventRef.current!;
+    const card = cardRef.current!;
+    const toggle = () => {
+      const cards = document.querySelectorAll('.cardEvent__content');
+      cards.forEach((card) => {
+        card.classList.remove('cardEvent__content--active');
+      });
+      card.classList.toggle('cardEvent__content--active');
+    };
+    event.addEventListener('click', toggle);
+    return () => {
+      event.removeEventListener('click', toggle);
+    };
+  }, []);
 
   return (
     <div className="cardEvent" ref={eventRef}>
@@ -33,11 +64,11 @@ const CardEvent: React.FC<props> = (event: props) => {
           {structureTime(event.event.startEvent)}
         </h3>
         <div className="cardEvent__header__button">
-          <Link className="button--edit cardEvent__content__buttonEdit" to={`/dashboard/${event.event.id}`}><Edit /> Edit</Link>
+          <button className="button--edit cardEvent__content__buttonEdit"><Edit /> Edit</button>
           <button onClick={() => deleteEvent(event.event.id)} className="button--delete">X</button>
         </div>
       </div>
-      <div className="cardEvent__content">
+      <div ref={cardRef} className="cardEvent__content">
         <h3 className="cardEvent__content__title">{event.event.name}</h3>
         <p className="cardEvent__content__description">
           {event.event.description}

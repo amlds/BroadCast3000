@@ -1,17 +1,21 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 
+/* import EventContext, { defaultState } from '../context/EventContext'; */
+
+import Event from '../types/Event';
 import EventService from '../services/EventService';
-import Event from '../types/Event'
 
+import Toolbar from '../components/Toolbar';
 import ListCard from '../components/ListCard';
 
 const getEvents = async () => {
   const events = await EventService.getEvents();
   return events;
-}
+};
 
 const Home: React.FC = () => {
+  /* const eventIdUpdate = defaultState.eventIdUpdate;
+  const [isUpdate, toggleUpdate] = React.useState<boolean>(defaultState.isUpdate); */
   const [events, setEvents] = React.useState<Event[]>([]);
 
   React.useEffect(() => {
@@ -28,15 +32,8 @@ const Home: React.FC = () => {
 
   return (
     <div>
-      <h1>Bienvenue sur broasdcast3000</h1>
-      <Link to="/dashboard">Dashboard</Link>
-      <Link to="/login">Login</Link>
-      <Link to="/device">Device</Link>
-
-      <section>
-        <h2>Les derniers événements</h2>
-        <ListCard events={events} />
-      </section>
+      <Toolbar />
+      <ListCard events={events} />
     </div>
   );
 };

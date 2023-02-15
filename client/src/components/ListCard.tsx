@@ -14,7 +14,7 @@ const ListCard: React.FC<Props> = ({ events }) => {
       <h2 className='listCard__title'>Nos prochains events :</h2>
       <div className='listCard__content'>
         {Object.values(events).map((event: Event) => (
-          <CardEvent event={event}/>
+          <CardEvent key={event.id} event={event}/>
         ))}
       </div>
       <span className='shadow'></span>

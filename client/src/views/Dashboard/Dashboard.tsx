@@ -1,11 +1,13 @@
 import React from 'react';
+
 import EventService from '../../services/EventService';
 import Event from '../../types/Event';
 
 import '../../assets/views/dashboard.scss';
 
+import DashboardConfig from '../../components/DashboardConfig';
 import ListCard from '../../components/ListCard';
-import FormulaireCreateEvent from '../../components/FormulaireCreateEvent';
+import LinkDevice from '../../components/LinkDevice';
 
 const getEvents = async () => {
   const events = await EventService.getEvents();
@@ -14,6 +16,7 @@ const getEvents = async () => {
 
 const Dashboard: React.FC = () => {
   const [events, setEvents] = React.useState<Event[]>([]);
+
 
   React.useEffect(() => {
     getEvents().then((events) => {
@@ -31,18 +34,15 @@ const Dashboard: React.FC = () => {
     <main className='dashboard'>
       <section className='dashboard__content'>
         <header>
-          <img className='logo' src='./images/Logo_wagon_white.png' alt='Wagon Logo'></img>
-          <div className='header__txt'>
-            <h2>Hello 'const [name, setName] = React.useState(get.api)'</h2>
-            <p className='text-normal'>[Insérer une phrase drôle ici]</p>
+          <div className="container--dashboard">
+            <img className='logo' src='./images/Logo_wagon_white.png' alt='Wagon Logo'></img>
+            <div className='header__txt'>
+              <h2>Hello Marina !</h2>
+              <LinkDevice/>
+            </div>
           </div>
         </header>
-        <div className='dashboard__content--form'>
-          <div className='form__link'>
-            <p className='text-normal'>Lien de la session</p>
-          </div>
-          <FormulaireCreateEvent />
-        </div>
+        <DashboardConfig />
       </section>
       <ListCard events={events} />
     </main>

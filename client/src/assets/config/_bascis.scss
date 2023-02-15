@@ -38,8 +38,20 @@ h3 {
   text-transform: capitalize;
 }
 
+.md-text-1 {
+  font-size: 16px;
+  font-weight: 600;
+}
+
 .align-row {
   display: flex;
   gap: 1rem;
   width: 100%;
+}
+
+.container--dashboard {
+  width: 100%;
+  max-width: 950px;
+  margin: 0 auto;
+  padding: 0 1rem;
 }

@@ -7,7 +7,6 @@ import '../../assets/views/dashboard.scss';
 
 import ListCard from '../../components/ListCard';
 import FormulaireUpdateEvent from '../../components/FormulaireUpdateEvent';
-import { useParams } from 'react-router-dom';
 
 const getEvents = async () => {
   const events = await EventService.getEvents();
@@ -16,7 +15,6 @@ const getEvents = async () => {
 
 
 const DashboardEvent: React.FC = () => {
-  const id = useParams();
   const [events, setEvents] = React.useState<Event[]>([]);
 
   React.useEffect(() => {
@@ -30,6 +28,7 @@ const DashboardEvent: React.FC = () => {
       setEvents(filteredEvents);
     });
   }, []);
+
 
 
   return (

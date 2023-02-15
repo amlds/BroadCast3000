@@ -11,7 +11,6 @@ export class EventController {
   }
 
   static async getEventById(id: string): Promise<Event> {
-    console.log(id);
     const response = await fetch(`http://localhost:4000/events/${id}`);
     const event: Event = await response.json();
     return event;
