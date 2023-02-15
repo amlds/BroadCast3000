@@ -2,11 +2,11 @@ import React from "react";
 
 import EventService from "../services/EventService";
 
-import EventContext from "../context/EventContext";
+/* import EventContext, { defaultState } from '../context/EventContext'; */
 
 import Edit from "./svg/Edit";
 import event from "../types/Event";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 
 const deleteEvent = async (id: number) => {
@@ -24,7 +24,6 @@ type props = {
 const CardEvent: React.FC<props> = (event: props) => {
   const eventRef = React.useRef<HTMLDivElement>(null);
   const cardRef = React.useRef<HTMLDivElement>(null);
-  const { toggleUpdate } = React.useContext(EventContext);
   let id = useParams().id as unknown as number;
 
   const structureTime = (time: string) => {
@@ -42,16 +41,21 @@ const CardEvent: React.FC<props> = (event: props) => {
     }
   }, [event.event.id, id]);
 
-  const toggleIsUpdate = (id: string) => {
-    setEventsUpdate(prevEvents =>
-      prevEvents.map(event => {
-        if (event.id === id) {
-          return { ...event, isUpdate: !event.isUpdate };
-        }
-        return event;
-      })
-    );
-  };
+  React.useEffect(() => {
+    const event = eventRef.current!;
+    const card = cardRef.current!;
+    const toggle = () => {
+      const cards = document.querySelectorAll('.cardEvent__content');
+      cards.forEach((card) => {
+        card.classList.remove('cardEvent__content--active');
+      });
+      card.classList.toggle('cardEvent__content--active');
+    };
+    event.addEventListener('click', toggle);
+    return () => {
+      event.removeEventListener('click', toggle);
+    };
+  }, []);
 
   return (
     <div className="cardEvent" ref={eventRef}>
@@ -60,7 +64,7 @@ const CardEvent: React.FC<props> = (event: props) => {
           {structureTime(event.event.startEvent)}
         </h3>
         <div className="cardEvent__header__button">
-          <button onClick={toggleUpdate} className="button--edit cardEvent__content__buttonEdit"><Edit /> Edit</button>
+          <button className="button--edit cardEvent__content__buttonEdit"><Edit /> Edit</button>
           <button onClick={() => deleteEvent(event.event.id)} className="button--delete">X</button>
         </div>
       </div>

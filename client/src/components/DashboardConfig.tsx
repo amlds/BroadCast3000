@@ -1,30 +1,36 @@
 import React from 'react';
 
-import FormulaireCreateEvent from './FormulaireCreateEvent';
+import EventsConfig from './EventsConfig';
+import Settings from './Settings';
 
 
 const DashboardConfig: React.FC = () => {
-  const [menu, setMenu] = React.useState('event');
+  const [menu, setMenu] = React.useState('Settings');
+  const buttons = document.querySelectorAll('.nav__button');
+
+  const handlClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+    if (e.currentTarget.textContent)
+    setMenu(e.currentTarget.textContent);
+    buttons.forEach((button) => {
+      button.classList.remove('nav__button--active');
+    });
+    e.currentTarget.classList.add('nav__button--active');
+  };
 
   return (
     <section className="dashboard__config">
       <nav>
-        <button className="nav_button"
-                onClick={() => setMenu('event')}>
-                Event
+        <button className="nav__button"
+                onClick={handlClick}>
+                Events
         </button>
-        <button className="nav_button"
-                onClick={() => setMenu('challenge')}>
-                Challenge
-        </button>
-        <button className="nav_button"
-                onClick={() => setMenu('config')}>
-                Config
+        <button className="nav__button"
+                onClick={handlClick}>
+                Settings
         </button>
       </nav>
-      {menu === 'event' && <FormulaireCreateEvent/>}
-      {menu === 'challenge' && <p>challenge</p>}
-      {menu === 'config' && <p>config</p>}
+      {menu === 'Events' && <EventsConfig />}
+      {menu === 'Settings' && <Settings />}
     </section>
   )
 };

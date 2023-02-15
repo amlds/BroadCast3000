@@ -1,13 +1,12 @@
 import React from 'react';
 
-import EventContext, { defaultState } from '../context/EventContext';
+/* import EventContext, { defaultState } from '../context/EventContext'; */
 
 import Event from '../types/Event';
 import EventService from '../services/EventService';
 
 import Toolbar from '../components/Toolbar';
 import ListCard from '../components/ListCard';
-import EventUpdate from '../types/EventUpdate';
 
 const getEvents = async () => {
   const events = await EventService.getEvents();
@@ -15,7 +14,8 @@ const getEvents = async () => {
 };
 
 const Home: React.FC = () => {
-  const [eventsUpdate, setEventsUpdate] = React.useState<EventUpdate[]>(defaultState.eventsUpdate);
+  /* const eventIdUpdate = defaultState.eventIdUpdate;
+  const [isUpdate, toggleUpdate] = React.useState<boolean>(defaultState.isUpdate); */
   const [events, setEvents] = React.useState<Event[]>([]);
 
   React.useEffect(() => {
@@ -30,23 +30,10 @@ const Home: React.FC = () => {
     });
   }, []);
 
-  const toggleIsUpdate = (id: string) => {
-    setEventsUpdate(prevEvents =>
-      prevEvents.map(event => {
-        if (event.id === id) {
-          return { ...event, isUpdate: !event.isUpdate };
-        }
-        return event;
-      })
-    );
-  };
-
   return (
     <div>
-      <EventContext.Provider value={{ eventsUpdate, toggleIsUpdate }}>
-        <Toolbar />
-        <ListCard events={events} />
-      </EventContext.Provider>
+      <Toolbar />
+      <ListCard events={events} />
     </div>
   );
 };

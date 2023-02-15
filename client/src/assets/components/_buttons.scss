@@ -18,11 +18,8 @@ button {
 }
 
 .button {
-  background-color: #E40D06;
   width: 100%;
-  border: 1px solid transparent;
   border-radius: 8px;
-  color: #FAFAFA;
   cursor: pointer;
   font-size: 1rem;
   font-weight: 600;
@@ -34,6 +31,12 @@ button {
   display: flex;
   justify-content: center;
   align-items: center;
+
+  &--primary {
+    background-color: #E40D06;
+    color: #FAFAFA;
+    border: 1px solid transparent;
+  }
 }
 
 
