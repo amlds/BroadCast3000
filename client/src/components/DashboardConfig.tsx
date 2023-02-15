@@ -6,16 +6,21 @@ import Settings from './Settings';
 
 const DashboardConfig: React.FC = () => {
   const [menu, setMenu] = React.useState('Settings');
-  const buttons = document.querySelectorAll('.nav__button');
 
   const handlClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     if (e.currentTarget.textContent)
     setMenu(e.currentTarget.textContent);
+  };
+
+  React.useEffect(() => {
+    const buttons = document.querySelectorAll('.nav__button');
     buttons.forEach((button) => {
       button.classList.remove('nav__button--active');
+      if(button.textContent === menu) {
+        button.classList.add('nav__button--active');
+      }
     });
-    e.currentTarget.classList.add('nav__button--active');
-  };
+  }, [menu]);
 
   return (
     <section className="dashboard__config">

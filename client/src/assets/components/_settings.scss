@@ -13,5 +13,21 @@
     background-color: #FFFFFF;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
+
+    &:last-child {
+      flex-direction: row;
+    }
+  }
+
+  .settings__carrousel__radio {
+    display: flex;
+    align-items: flex-end;
+
+    & > *:nth-child(even) {
+      margin-right: 16px;
+    }
+    & > *:nth-child(odd) {
+      margin-left: 8px;
+    }
   }
 }
